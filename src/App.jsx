@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ViewDisks from './components/disks/pages/ViewDisks';
+import ViewDiscs from './components/discs/pages/ViewDiscs';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/nav/Navbar';
 
@@ -12,8 +12,7 @@ function App() {
         <Navbar />
         <div className="container-fluid">
           <Switch>
-            <Route path="/disks" render={() => <ViewDisks />} />
-            <Route path="/disks/:id" render={() => <ViewDisks />} />
+            <Route path="/disks" render={() => <ViewDiscs />} />
           </Switch>
         </div>
       </Router>

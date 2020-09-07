@@ -1,40 +1,58 @@
 import React, { Component } from 'react'
 import ViewTable from '../../common/Viewtable/ViewTable'
-import { getDisks, deleteDisc, saveDisc } from '../../../services/discService';
-import CreateDiskForm from '../view_page_components/CreateDiskForm';
+import { getDiscs, deleteDisc, saveDisc } from '../../../services/DiscService';
+import CreateDiskForm from '../view_page_components/CreateDiscForm';
+import Input from '../../common/Input';
 
-export class ViewDisks extends Component {
+export class ViewCds extends Component {
 
     state = {
         discs: [],
-        newDiscBtnClicked: false
+        newDiscBtnClicked: false,
+        searchValue: "",
+        timeOut: null
     }
 
     componentDidMount() {
-        this.getDisks();
+        this.getDiscs();
     }
 
-    getDisks() {
-        getDisks()
+    handleSearch(searchValue) {
+        const state = this.state;
+
+        if (state.timeOut) {
+            clearTimeout(state.timeOut);
+        }
+
+        state.timeOut = setTimeout(() => this.getDiscs(), 500);
+        state.searchValue = searchValue;
+
+        this.setState(state);
+    }
+
+    getDiscs() {
+        const { searchValue } = this.state;
+        
+        getDiscs(searchValue)
             .then(resp => resp.json())
             .then(resp => this.setState({ discs: resp }));
     }
 
     deleteDisc(id) {
         deleteDisc(id)
-            .then(() => this.getDisks());
+            .then(() => this.getDiscs());
     }
 
     saveDisc(disc) {
         saveDisc(disc.id, disc)
-            .then(() => this.getDisks());
+            .then(() => this.getDiscs());
     }
 
     renderNewDiskForm() {
         const { newDiscBtnClicked } = this.state;
 
         if (newDiscBtnClicked) {
-            return <CreateDiskForm getDisks={() => this.getDisks()}
+            return <CreateDiskForm getDisks={() => this.getDiscs()}
                 closeForm={() => this.setState({ newDiscBtnClicked: false })} />
         }
     }
@@ -59,7 +77,8 @@ export class ViewDisks extends Component {
     render() {
         const theads = ["Title", "Artist", "Album", "Year", "Style", "Song count", ""];
         const attributes = ["title", "artist_id", "album", "year", "style_id", "song_count"]
-        const { discs } = this.state;
+        const { discs, searchValue } = this.state;
+
         return (
             <>
                 <div className="row">
@@ -68,6 +87,12 @@ export class ViewDisks extends Component {
                     </div>
                     <div className="col">
                         {this.renderNewDiskForm()}
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-5">
+                        <Input value={searchValue} palecholder="Search...."
+                            onChange={(name, value) => this.handleSearch(value)} />
                     </div>
                 </div>
                 <div className="row">
@@ -82,4 +107,4 @@ export class ViewDisks extends Component {
     }
 }
 
-export default ViewDisks
+export default ViewCds

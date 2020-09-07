@@ -13,6 +13,10 @@ export class ViewTableRow extends Component {
         this.setState({ row: row });
     }
 
+    componentWillReceiveProps(newProps) {
+        this.setState({ row: newProps.row });
+    }
+
     renderEditButton() {
         const { edit, row } = this.state;
         if (edit) {

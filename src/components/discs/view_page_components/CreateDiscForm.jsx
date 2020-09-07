@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import Input from '../../common/Input'
-import { createDisc } from '../../../services/discService';
+import { createDisc } from '../../../services/DiscService';
 
-export class CreateDiskForm extends Component {
+export class CreateDiscForm extends Component {
 
     state = {
-        newDisk: {
+        newDisc: {
             title: "",
             artist_id: "",
             album: "",
@@ -16,9 +16,9 @@ export class CreateDiskForm extends Component {
     }
 
     createNewCD() {
-        const { newDisk } = this.state;
+        const { newDisc } = this.state;
         const { getDisks, closeForm } = this.props;
-        createDisc(newDisk).then(() => {
+        createDisc(newDisc).then(() => {
             getDisks();
             closeForm();
         }
@@ -26,16 +26,16 @@ export class CreateDiskForm extends Component {
     }
 
     handleValueChange(attribute, value) {
-        let { newDisk } = this.state;
+        let { newDisc } = this.state;
 
-        newDisk[attribute] = value;
+        newDisc[attribute] = value;
 
-        this.setState({ newDisk: newDisk });
+        this.setState({ newDisc: newDisc });
     }
 
     render() {
         const { title, artist_id, album,
-            year, style_id, song_count } = this.state.newDisk;
+            year, style_id, song_count } = this.state.newDisc;
         return (
             <div className="container container-fluid border mb-2 bg-light">
                 <div className="row">
@@ -78,4 +78,4 @@ export class CreateDiskForm extends Component {
     }
 }
 
-export default CreateDiskForm
+export default CreateDiscForm

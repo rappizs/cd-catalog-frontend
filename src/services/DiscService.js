@@ -1,7 +1,7 @@
 import { apiEndpont } from "../config";
 
-export function getDisks() {
-    const url = "/discs";
+export function getDiscs(searchValue) {
+    const url = "/discs?search-value=" + searchValue;
     return fetch(apiEndpont + url);
 }
 
