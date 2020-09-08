@@ -3,6 +3,8 @@ import ViewTable from '../../common/Viewtable/ViewTable'
 import { getDiscs, deleteDisc, saveDisc } from '../../../services/DiscService';
 import CreateDiskForm from '../view_page_components/CreateDiscForm';
 import Input from '../../common/Input';
+import { getArtists } from '../../../services/ArtistService';
+import { getStyles } from '../../../services/StyleService';
 
 export class ViewCds extends Component {
 
@@ -10,11 +12,15 @@ export class ViewCds extends Component {
         discs: [],
         newDiscBtnClicked: false,
         searchValue: "",
-        timeOut: null
+        timeOut: null,
+        artists: [],
+        styles: []
     }
 
     componentDidMount() {
         this.getDiscs();
+        this.getArtists();
+        this.getStyles();
     }
 
     handleSearch(searchValue) {
@@ -38,6 +44,18 @@ export class ViewCds extends Component {
             .then(resp => this.setState({ discs: resp }));
     }
 
+    getArtists() {
+        getArtists("")
+            .then(resp => resp.json())
+            .then(resp => this.setState({ artists: resp }));
+    }
+
+    getStyles() {
+        getStyles("")
+            .then(resp => resp.json())
+            .then(resp => this.setState({ styles: resp }));
+    }
+
     deleteDisc(id) {
         deleteDisc(id)
             .then(() => this.getDiscs());
@@ -49,10 +67,13 @@ export class ViewCds extends Component {
     }
 
     renderNewDiskForm() {
-        const { newDiscBtnClicked } = this.state;
+        const { newDiscBtnClicked,
+            artists,
+            styles } = this.state;
 
         if (newDiscBtnClicked) {
             return <CreateDiskForm getDisks={() => this.getDiscs()}
+                artists={artists} styles={styles}
                 closeForm={() => this.setState({ newDiscBtnClicked: false })} />
         }
     }
@@ -76,8 +97,9 @@ export class ViewCds extends Component {
 
     render() {
         const theads = ["Title", "Artist", "Album", "Year", "Style", "Song count", ""];
-        const attributes = ["title", "artist_id", "album", "year", "style_id", "song_count"]
-        const { discs, searchValue } = this.state;
+        const attributes = ["title", "artist", "album", "year", "style", "song_count"]
+        const { discs, searchValue,
+            artists, styles } = this.state;
 
         return (
             <>
@@ -104,6 +126,7 @@ export class ViewCds extends Component {
                 <div className="d-flex justify-content-center">
                     <div className="col-md-12 col-lg-10 table-responsive">
                         <ViewTable deleteRow={(id) => this.deleteDisc(id)}
+                            artists={artists} styles={styles}
                             save={(disc) => this.saveDisc(disc)}
                             theads={theads} rows={discs} attributes={attributes} />
                     </div>

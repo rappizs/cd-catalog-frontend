@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Input from '../Input';
+import Select from '../Select';
 
 export class ViewTableRow extends Component {
 
@@ -19,6 +20,7 @@ export class ViewTableRow extends Component {
 
     renderEditButton() {
         const { edit, row } = this.state;
+
         if (edit) {
             return <button className="btn btn-primary form-group"
                 onClick={() => {
@@ -47,6 +49,18 @@ export class ViewTableRow extends Component {
     getType(a) {
         const numberTypes = ["year", "song_count"];
         const { row } = this.state;
+        const { artists, styles } = this.props;
+
+        if (a === "artist")
+            return <Select name="artist" options={artists}
+                onChange={(name, value) => this.handleInputChange(name, value)}
+                attribute="name" />
+
+        if (a === "style")
+            return <Select name="style" options={styles}
+                onChange={(name, value) => this.handleInputChange(name, value)}
+                attribute="name" />
+
         if (numberTypes.includes(a)) {
             return <Input name={a} value={row[a]} type="number"
                 onChange={(name, value) => this.handleInputChange(name, value)} />

@@ -1,18 +1,30 @@
 import React, { Component } from 'react'
 import Input from '../../common/Input'
 import { createDisc } from '../../../services/DiscService';
+import Select from '../../common/Select';
 
 export class CreateDiscForm extends Component {
 
     state = {
         newDisc: {
             title: "",
-            artist_id: "",
+            artist: "Choose...",
             album: "",
             year: "",
-            style_id: "",
+            style: "Choose...",
             song_count: ""
-        }
+        },
+        styles: [],
+        artists: []
+    }
+
+    componentWillReceiveProps(newProps){
+        const {artists, styles} = newProps;
+
+        this.setState({
+            artist: artists,
+            styles: styles
+        });
     }
 
     createNewCD() {
@@ -34,8 +46,10 @@ export class CreateDiscForm extends Component {
     }
 
     render() {
-        const { title, artist_id, album,
-            year, style_id, song_count } = this.state.newDisc;
+        const { title, album,
+            year, song_count } = this.state.newDisc;
+        const { artists, styles } = this.props;
+
         return (
             <div className="container container-fluid border mb-2 bg-light">
                 <div className="row">
@@ -44,8 +58,9 @@ export class CreateDiscForm extends Component {
                             onChange={(name, value) => this.handleValueChange(name, value)} />
                     </div>
                     <div className="col">
-                        <Input name="artist_id" label="Artist" value={artist_id}
-                            onChange={(name, value) => this.handleValueChange(name, value)} />
+                        <Select name="artist" options={artists}
+                            onChange={(name, value) => this.handleValueChange(name, value)}
+                            attribute="name" label="Artist" />
                     </div>
                     <div className="col">
                         <Input name="album" label="Album" value={album}
@@ -58,8 +73,9 @@ export class CreateDiscForm extends Component {
                             onChange={(name, value) => this.handleValueChange(name, value)} />
                     </div>
                     <div className="col">
-                        <Input name="style_id" label="Style" value={style_id}
-                            onChange={(name, value) => this.handleValueChange(name, value)} />
+                        <Select name="style" options={styles}
+                            onChange={(name, value) => this.handleValueChange(name, value)}
+                            attribute="name" label="Style" />
                     </div>
                     <div className="col">
                         <label htmlFor="song_count">Song count</label>
