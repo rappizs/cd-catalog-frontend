@@ -58,7 +58,7 @@ export class ViewTableRow extends Component {
     }
 
     render() {
-        const { attributes, deleteDisc } = this.props;
+        const { attributes, deleteRow } = this.props;
         const { row } = this.state;
         const { edit } = this.state;
         return (
@@ -73,7 +73,7 @@ export class ViewTableRow extends Component {
                 </td>
                 <td>
                     <button className="btn btn-danger"
-                        onClick={() => deleteDisc(row.id)}>
+                        onClick={() => deleteRow(row.id)}>
                         Delete
                    </button>
                 </td>

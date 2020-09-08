@@ -32,7 +32,7 @@ export class ViewCds extends Component {
 
     getDiscs() {
         const { searchValue } = this.state;
-        
+
         getDiscs(searchValue)
             .then(resp => resp.json())
             .then(resp => this.setState({ discs: resp }));
@@ -61,7 +61,7 @@ export class ViewCds extends Component {
         const { newDiscBtnClicked } = this.state;
 
         if (!newDiscBtnClicked) {
-            return <button className="btn btn-secondary mb-2"
+            return <button className="btn btn-secondary"
                 onClick={() => this.setState({ newDiscBtnClicked: true })}>
                 Add CD
             </button>
@@ -85,19 +85,25 @@ export class ViewCds extends Component {
                     <div className="col-1">
                         {this.renderAddCdButton()}
                     </div>
-                    <div className="col">
+                    <div className="col-6">
                         {this.renderNewDiskForm()}
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-5">
+                <div className="d-flex justify-content-center">
+                    <div className="col">
+                        <hr />
+                    </div>
+                    <div className="col-md-6 col-lg-4">
                         <Input value={searchValue} palecholder="Search...."
                             onChange={(name, value) => this.handleSearch(value)} />
                     </div>
-                </div>
-                <div className="row">
                     <div className="col">
-                        <ViewTable deleteDisc={(id) => this.deleteDisc(id)}
+                        <hr />
+                    </div>
+                </div>
+                <div className="d-flex justify-content-center">
+                    <div className="col-md-12 col-lg-10 table-responsive">
+                        <ViewTable deleteRow={(id) => this.deleteDisc(id)}
                             save={(disc) => this.saveDisc(disc)}
                             theads={theads} rows={discs} attributes={attributes} />
                     </div>
