@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getArtists, deleteArtist, saveArtist, createArtist } from '../../../services/ArtistService';
-import ViewTable from '../../common/Viewtable/ViewTable';
+import ViewTable from '../../common/viewtable/ViewTable';
 import Input from '../../common/Input';
 
 export class ViewArtists extends Component {

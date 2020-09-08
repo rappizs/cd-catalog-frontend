@@ -1,0 +1,21 @@
+Alap követelmények:
+
+    Katalógus megjelenítése táblázat nézetben (kész)
+    Gyűjteményt lehessen bővíteni, módosítani és törölni (kész)
+    Gyűjtemény mezők: (kész)
+        Előadó (automatikusan kínálja fel a korábban rögzített előadókat, de újat is tudjon ide 	rögzíteni)
+        Album
+        Évjárat (évszám)
+        Cím (lemez címe)
+        Stílus (automatikusan kínálja fel a korábban rögzített stílusokat, de újat is tudjon ide 		rögzíteni) (pl. Elektronikus)
+        Zeneszámok darabszáma (pl. 24)
+    Tudjak keresni (legalább a címben) (kész)
+
+Extra funkciók:
+
+    Előadó és stílus törzsadatok külön menüpontban (külön is lehessen őket bővíteni, módosítani, 	törölni) (kész)
+    Keresés az összes mezőben (kész)
+    Lapozás a táblázatban
+    Táblázat rendezése az oszlopok fejlécére kattintva (kész)
+    Egy oldalon megjelenített sorok számának kiválasztása a táblázat alján
+

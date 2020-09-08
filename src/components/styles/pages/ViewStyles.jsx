@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ViewTable from '../../common/Viewtable/ViewTable';
+import ViewTable from '../../common/viewtable/ViewTable';
 import Input from '../../common/Input';
 import { getStyles, deleteStyle, saveStyle, createStyle } from '../../../services/StyleService';
 
