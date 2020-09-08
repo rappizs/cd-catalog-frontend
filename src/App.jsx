@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import ViewDiscs from './components/discs/pages/ViewDiscs';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';

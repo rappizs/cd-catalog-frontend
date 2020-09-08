@@ -5,7 +5,7 @@ export class PaginationButton extends Component {
     getStyle() {
         const { currentPage, pageId } = this.props;
 
-        if (currentPage == pageId)
+        if (currentPage === pageId)
             return "page-item active";
         else
             return "page-item";

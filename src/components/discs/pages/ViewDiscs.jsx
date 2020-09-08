@@ -166,7 +166,7 @@ export class ViewCds extends Component {
                     <div className="col-md-10 col-lg-9">
                         <Pagination pageCount={lastPage} currentPage={currentPage}
                             clickHandler={id => {
-                                if (currentPage != id && id > 0 && id <= lastPage) {
+                                if (currentPage !== id && id > 0 && id <= lastPage) {
                                     this.setState({ requiredPage: id }, this.getDiscs);
                                 }
                             }} />

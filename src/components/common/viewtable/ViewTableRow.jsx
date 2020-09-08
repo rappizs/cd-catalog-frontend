@@ -14,8 +14,11 @@ export class ViewTableRow extends Component {
         this.setState({ row: row });
     }
 
-    componentWillReceiveProps(newProps) {
-        this.setState({ row: newProps.row });
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.row !== prevState.row) {
+            return ({ row: nextProps.row })
+        }
+        return null
     }
 
     renderEditButton() {
@@ -65,7 +68,7 @@ export class ViewTableRow extends Component {
             return <Input name={a} value={row[a]} type="number"
                 onChange={(name, value) => this.handleInputChange(name, value)} />
         }
-        else if(a !== "new_id"){
+        else if (a !== "new_id") {
             return <Input name={a} value={row[a]}
                 onChange={(name, value) => this.handleInputChange(name, value)} />
         }
