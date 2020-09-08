@@ -18,8 +18,8 @@ export class CreateDiscForm extends Component {
         artists: []
     }
 
-    componentWillReceiveProps(newProps){
-        const {artists, styles} = newProps;
+    componentWillReceiveProps(newProps) {
+        const { artists, styles } = newProps;
 
         this.setState({
             artist: artists,
@@ -51,40 +51,42 @@ export class CreateDiscForm extends Component {
         const { artists, styles } = this.props;
 
         return (
-            <div className="container container-fluid border mb-2 bg-light">
+            <div className="container container-fluid border mb-2 pt-2 bg-light">
                 <div className="row">
-                    <div className="col">
+                    <div className="col-sm-5 col-lg-5">
                         <Input name="title" label="Title" value={title}
                             onChange={(name, value) => this.handleValueChange(name, value)} />
                     </div>
-                    <div className="col">
+                    <div className="col-sm-4 col-lg-4">
                         <Select name="artist" options={artists}
                             onChange={(name, value) => this.handleValueChange(name, value)}
                             attribute="name" label="Artist" />
                     </div>
-                    <div className="col">
+                    <div className="col-sm-3 col-lg-3">
                         <Input name="album" label="Album" value={album}
                             onChange={(name, value) => this.handleValueChange(name, value)} />
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col">
-                        <Input name="year" label="Year" value={year}
-                            onChange={(name, value) => this.handleValueChange(name, value)} />
-                    </div>
-                    <div className="col">
+                    <div className="col-sm-5 col-lg-5">
                         <Select name="style" options={styles}
                             onChange={(name, value) => this.handleValueChange(name, value)}
                             attribute="name" label="Style" />
                     </div>
-                    <div className="col">
+                    <div className="col-sm-4 col-lg-4">
+                        <label htmlFor="year">Year</label>
+                        <input name="year" value={year}
+                            type="number" className="form-control"
+                            onChange={(e) => this.handleValueChange("year", e.target.value)} />
+                    </div>
+                    <div className="col-sm-3 col-lg-3">
                         <label htmlFor="song_count">Song count</label>
                         <input name="song_count" value={song_count}
                             type="number" className="form-control"
                             onChange={(e) => this.handleValueChange("song_count", e.target.value)} />
                     </div>
                 </div>
-                <div className="d-flex flex-row-reverse mb-2">
+                <div className="d-flex flex-row-reverse mb-2 mt-2">
                     <button className="btn btn-primary" onClick={() => this.createNewCD()}>
                         Save
                     </button>

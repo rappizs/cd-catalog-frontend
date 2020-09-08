@@ -14,7 +14,7 @@ function App() {
         <Navbar />
         <div className="container-fluid">
           <Switch>
-            <Route path="/disks" render={() => <ViewDiscs />} />
+            <Route path="/discs" render={() => <ViewDiscs />} />
             <Route path="/artists" render={() => <ViewArtists />} />
             <Route path="/styles" render={() => <ViewStyles />} />
           </Switch>

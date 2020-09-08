@@ -69,19 +69,19 @@ export class ViewStyles extends Component {
 
         return (
             <>
-                <div className="d-flex justify-content-center align-items-end">
-                    <div className="p-2">
+                <div className="row justify-content-center align-items-end">
+                    <div className="col-md-4 col-lg-3">
                         <Input name="new" label="New style" value={new_style}
                             palecholder="New style's name..."
                             onChange={(name, value) => this.setState({ new_style: value })} />
                     </div>
-                    <div className="p-2 form-group">
+                    <div className="col-md-2 col-lg-1 form-group">
                         <button className="btn btn-primary" onClick={() => this.createStyle()}>
                             Save
                         </button>
                     </div>
                 </div>
-                <div className="d-flex justify-content-center align-items-end">
+                <div className="row justify-content-center align-items-end">
                     <div className="col-md-6 col-lg-4">
                         <hr />
                         <Input name="search" value={searchValue}
@@ -89,7 +89,7 @@ export class ViewStyles extends Component {
                             onChange={(name, value) => this.handleSearch(value)} />
                     </div>
                 </div>
-                <div className="d-flex justify-content-center">
+                <div className="row justify-content-center">
                     <div className="col-md-6 col-lg-4  table-responsive">
                         <ViewTable deleteRow={(id) => this.deleteStyle(id)}
                             orderBy={() =>

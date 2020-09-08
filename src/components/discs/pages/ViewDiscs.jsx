@@ -132,11 +132,11 @@ export class ViewCds extends Component {
 
         return (
             <>
-                <div className="row">
-                    <div className="col-1">
+                <div className="d-flex flex-row">
+                    <div className="p-2">
                         {this.renderAddCdButton()}
                     </div>
-                    <div className="col-6">
+                    <div className="p-2">
                         {this.renderNewDiskForm()}
                     </div>
                 </div>

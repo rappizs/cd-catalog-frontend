@@ -15,7 +15,7 @@ Extra funkciók:
 
     Előadó és stílus törzsadatok külön menüpontban (külön is lehessen őket bővíteni, módosítani, 	törölni) (kész)
     Keresés az összes mezőben (kész)
-    Lapozás a táblázatban
+    Lapozás a táblázatban (kész)
     Táblázat rendezése az oszlopok fejlécére kattintva (kész)
-    Egy oldalon megjelenített sorok számának kiválasztása a táblázat alján
+    Egy oldalon megjelenített sorok számának kiválasztása a táblázat alján (kész)
 
