@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 
 export class ViewTableHead extends Component {
     render() {
-        const { theads } = this.props;
+        const { theads, attributes, orderBy } = this.props;
         return (
             <thead>
                 <tr>
                     {theads.map((h, index) => (
-                        <th key={index}>{h}</th>
+                        <th key={index} style={{ cursor: "pointer" }}
+                            onClick={() => orderBy(attributes[index])}>{h}</th>
                     )
                     )}
                     <th></th>

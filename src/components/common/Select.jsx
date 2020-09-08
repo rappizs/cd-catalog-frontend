@@ -12,7 +12,7 @@ export class Select extends Component {
                 <select name={name} id={name} className="form-control" onChange={(e) => onChange(name, e.target.value)}>
                     <option>Choose...</option>
                     {options.map((option, index) => (
-                        <option>{option[attribute]}</option>
+                        <option key={index}>{option[attribute]}</option>
                     ))}
                 </select>
             </div>

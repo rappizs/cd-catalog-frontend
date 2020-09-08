@@ -1,7 +1,10 @@
 import { apiEndpont } from "../config";
 
-export function getDiscs(searchValue) {
-    const url = "/discs?search-value=" + searchValue;
+export function getDiscs(searchValue, orderBy) {
+    const url = "/discs?search-value=" + searchValue
+        + "&order-by=" + orderBy.attribute
+        + "&type=" + (orderBy.type ? "asc" : "desc");
+
     return fetch(apiEndpont + url);
 }
 

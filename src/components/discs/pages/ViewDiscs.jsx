@@ -14,7 +14,11 @@ export class ViewCds extends Component {
         searchValue: "",
         timeOut: null,
         artists: [],
-        styles: []
+        styles: [],
+        orderBy: {
+            attribute: "title",
+            type: true
+        }
     }
 
     componentDidMount() {
@@ -37,9 +41,9 @@ export class ViewCds extends Component {
     }
 
     getDiscs() {
-        const { searchValue } = this.state;
+        const { searchValue, orderBy } = this.state;
 
-        getDiscs(searchValue)
+        getDiscs(searchValue, orderBy)
             .then(resp => resp.json())
             .then(resp => this.setState({ discs: resp }));
     }
@@ -95,8 +99,21 @@ export class ViewCds extends Component {
         }
     }
 
+    orderBy(attribute) {
+        const { orderBy } = this.state;
+
+        if (orderBy.attribute === attribute)
+            orderBy.type = !orderBy.type;
+        else {
+            orderBy.type = "asc";
+            orderBy.attribute = attribute;
+        }
+
+        this.setState({ orderBy: orderBy }, this.getDiscs);
+    }
+
     render() {
-        const theads = ["Title", "Artist", "Album", "Year", "Style", "Song count", ""];
+        const theads = ["Title", "Artist", "Album", "Year", "Style", "Song count"];
         const attributes = ["title", "artist", "album", "year", "style", "song_count"]
         const { discs, searchValue,
             artists, styles } = this.state;
@@ -128,6 +145,7 @@ export class ViewCds extends Component {
                         <ViewTable deleteRow={(id) => this.deleteDisc(id)}
                             artists={artists} styles={styles}
                             save={(disc) => this.saveDisc(disc)}
+                            orderBy={(attribute) => this.orderBy(attribute)}
                             theads={theads} rows={discs} attributes={attributes} />
                     </div>
                 </div>

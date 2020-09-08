@@ -9,7 +9,8 @@ export class ViewStyles extends Component {
         styles: [],
         searchValue: "",
         new_style: "",
-        timeOut: null
+        timeOut: null,
+        type: true
     }
 
     componentDidMount() {
@@ -30,9 +31,9 @@ export class ViewStyles extends Component {
     }
 
     getStyles() {
-        const { searchValue } = this.state;
+        const { searchValue, type } = this.state;
 
-        getStyles(searchValue)
+        getStyles(searchValue, type)
             .then(resp => resp.json())
             .then(resp => this.setState({ styles: resp }));
     }
@@ -91,6 +92,8 @@ export class ViewStyles extends Component {
                 <div className="d-flex justify-content-center">
                     <div className="col-md-6 col-lg-4  table-responsive">
                         <ViewTable deleteRow={(id) => this.deleteStyle(id)}
+                            orderBy={() =>
+                                this.setState({ type: !this.state.type }, this.getStyles)}
                             save={(style) => this.saveStyle(style)}
                             theads={theads} rows={styles} attributes={attributes} />
                     </div>

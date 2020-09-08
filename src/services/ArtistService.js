@@ -1,7 +1,9 @@
 import { apiEndpont } from "../config";
 
-export function getArtists(searchValue) {
-    const url = "/artists?search-value=" + searchValue;
+export function getArtists(searchValue, type) {
+    const url = "/artists?search-value=" + searchValue
+        + "&type=" + (type ? "asc" : "desc");
+        
     return fetch(apiEndpont + url);
 }
 

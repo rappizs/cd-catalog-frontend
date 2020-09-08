@@ -5,10 +5,10 @@ import ViewTableBody from './ViewTableBody'
 export class ViewTable extends Component {
     render() {
         const { theads, rows, attributes,
-            deleteRow, save, artists, styles } = this.props;
+            deleteRow, save, artists, styles, orderBy } = this.props;
         return (
             <table className="table table-hover">
-                <ViewTableHead theads={theads} />
+                <ViewTableHead theads={theads} attributes={attributes} orderBy={orderBy} />
                 <ViewTableBody rows={rows} attributes={attributes}
                     artists={artists} styles={styles}
                     deleteRow={deleteRow} save={save} />

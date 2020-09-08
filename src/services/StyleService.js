@@ -1,7 +1,9 @@
 import { apiEndpont } from "../config";
 
-export function getStyles(searchValue) {
-    const url = "/styles?search-value=" + searchValue;
+export function getStyles(searchValue, type) {
+    const url = "/styles?search-value=" + searchValue
+        + "&type=" + (type ? "asc" : "desc");
+
     return fetch(apiEndpont + url);
 }
 
