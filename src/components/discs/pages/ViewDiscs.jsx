@@ -21,7 +21,7 @@ export class ViewCds extends Component {
             attribute: "title",
             type: true
         },
-        perPage: "1",
+        perPage: "10",
         lastPage: null,
         currentPage: 1,
         requiredPage: 1

@@ -23,8 +23,8 @@ export class Pagination extends Component {
                     pageIds[i] = i;
                 }
             }
-            else if (currentPage > pageCount - 3) {
-                for (let i = currentPage - 3; i <= currentPage + 3; i++) {
+            else if (currentPage >= pageCount - 3) {
+                for (let i = currentPage - 3; i <= pageCount; i++) {
                     pageIds[i] = i;
                 }
             }
@@ -32,7 +32,7 @@ export class Pagination extends Component {
 
         return (
             <>
-                <ul className="pagination m-0">
+                <ul className="pagination mb-5">
                     <li className="page-item">
                         <button className="page-link"
                             onClick={() => clickHandler(1)}>

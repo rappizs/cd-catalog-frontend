@@ -8,7 +8,7 @@ export class PerPage extends Component {
             <>
                 <label htmlFor="perpage">Per page</label>
                 <select name="perpage" id="perpage"
-                    className="form-control" onChange={e => onChange(e.target.value)}>
+                    className="form-control mb-5" onChange={e => onChange(e.target.value)}>
                     <option value="10">10</option>
                     <option value="25">25</option>
                     <option value="50">50</option>

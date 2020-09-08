@@ -65,7 +65,7 @@ export class ViewTableRow extends Component {
             return <Input name={a} value={row[a]} type="number"
                 onChange={(name, value) => this.handleInputChange(name, value)} />
         }
-        else {
+        else if(a !== "new_id"){
             return <Input name={a} value={row[a]}
                 onChange={(name, value) => this.handleInputChange(name, value)} />
         }
