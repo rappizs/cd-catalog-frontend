@@ -42,6 +42,7 @@ export class ViewCds extends Component {
 
         state.timeOut = setTimeout(() => this.getDiscs(), 500);
         state.searchValue = searchValue;
+        state.requiredPage = 1;
 
         this.setState(state);
     }
