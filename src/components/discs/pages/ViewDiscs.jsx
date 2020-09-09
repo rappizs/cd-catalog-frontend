@@ -173,7 +173,10 @@ export class ViewCds extends Component {
                     </div>
                     <div className="col-md-2 col-lg-1">
                         <PerPage onChange={(perPage) =>
-                            this.setState({ perPage: perPage }, this.getDiscs)} />
+                            this.setState({
+                                perPage: perPage,
+                                requiredPage: 1
+                            }, this.getDiscs)} />
                     </div>
                 </div>
             </>
